@@ -1,7 +1,9 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <>Hello, Nextjs!</>
+    <>
+      <h2>Welcome</h2>
+      <div>Hello, WEB</div>
+      <img src="/free-icon-internet-493805.png" alt="" />
+    </>
   );
 }
