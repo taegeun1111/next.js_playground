@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Web tutorials CRUD",
@@ -17,35 +16,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const response = await fetch("http://localhost:9999/topics");
-  const topics: topicItem[] = await response.json();
 
   return (
     <html lang="en">
       <body>
-        <h1>
-          <a href="/">WEB</a>
-        </h1>
-        <ol>
-          {topics.map((list, index) => {
-            return (
-              <li key={index}>
-                <Link href={`/read/${list.id}`}>{list.title}</Link>
-              </li>
-            );
-          })}
-        </ol>
         {children}
-        <ul>
-          <li>
-            <a href="/create">Create</a>
-          </li>
-          <li>
-            <a href="/update">Update</a>
-          </li>
-          <li>
-            <input type="button" value="delete" />
-          </li>
-        </ul>
       </body>
     </html>
   );
