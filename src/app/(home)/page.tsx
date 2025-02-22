@@ -1,4 +1,4 @@
-import Movie from "@/components/movie";
+import Movie, { IMovieProps } from "@/components/movie";
 import { Metadata } from "next";
 import styles from "../../styles/home.module.css";
 
@@ -19,7 +19,7 @@ export default async function HomePage() {
   const movies = await getMovies();
   return (
     <div className={styles.container}>
-      {movies.map((movie) => (
+      {movies.map((movie: IMovieProps) => (
         <Movie
           key={movie.id}
           id={movie.id}
