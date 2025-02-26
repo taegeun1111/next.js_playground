@@ -9,6 +9,7 @@ import {
   Timestamp,
   getDoc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -61,7 +62,12 @@ export const addTodo = async (title) => {
   // later...
   await setDoc(newTodoRef, newTodo);
 
-  return newTodoRef;
+  return {
+    id: newTodoRef.id,
+    title: title,
+    is_done: false,
+    created_at: createdAtTimestamp.toDate(),
+  };
 };
 
 // 단일 할일 조회
@@ -91,7 +97,9 @@ export const fetchATodo = async (id) => {
 
 // 단일 할일 삭제
 export const deleteATodo = async (id) => {
-  const fetchedATodo = fetchATodo(id);
+  const fetchedATodo = await fetchATodo(id);
+  console.log("fetchedATodo: ", fetchedATodo);
+
   if (fetchedATodo === null) {
     return null;
   }
@@ -99,4 +107,27 @@ export const deleteATodo = async (id) => {
   await deleteDoc(doc(db, "todos", id));
 
   return fetchedATodo;
+};
+
+// 단일 할일 수정
+export const editATodo = async (id, { title, is_done }) => {
+  const fetchedATodo = await fetchATodo(id);
+  console.log("fetchedATodo: ", fetchedATodo);
+
+  if (fetchedATodo === null) {
+    return null;
+  }
+  const todoRef = doc(db, "todos", id);
+
+  await updateDoc(todoRef, {
+    title,
+    is_done,
+  });
+
+  return {
+    id,
+    title,
+    is_done,
+    created_at: fetchedATodo.created_at,
+  };
 };

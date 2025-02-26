@@ -15,11 +15,15 @@ export const GET = async (request: NextRequest) => {
 
 // 할 일 추가
 export const POST = async (request: NextRequest) => {
-  console.log('??');
-  
   const { title } = await request.json();
-  console.log(title);
-  
+
+  if (title === undefined) {
+    const errMessage = {
+      message: "제목을 작성해주세요.",
+    };
+    return NextResponse.json(errMessage, { status: 422 });
+  }
+
   const addedTodo = await addTodo(title);
 
   const response = {

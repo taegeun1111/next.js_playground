@@ -1,4 +1,4 @@
-import { deleteATodo, fetchATodo } from "@/data/firestore";
+import { deleteATodo, editATodo, fetchATodo } from "@/data/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
 // 단일 조회
@@ -27,7 +27,8 @@ export const DELETE = async (
   request: NextRequest,
   { params }: { params: { slug: string } }
 ) => {
-  const deletedTodo = deleteATodo(params.slug);
+  const deletedTodo = await deleteATodo(params.slug);
+  console.log("deletedTodo: ", deletedTodo);
 
   if (deletedTodo === null) {
     return new Response(null, { status: 204 });
@@ -48,15 +49,15 @@ export const POST = async (
 ) => {
   const { title, is_done } = await request.json();
 
-  const editedTodo = {
-    id: params.slug,
-    title,
-    is_done,
-  };
+  const editedATodo = await editATodo(params.slug, { title, is_done });
+
+  if (editedATodo === null) {
+    return new Response(null, { status: 204 });
+  }
 
   const response = {
     messsage: "단일 할일 수정 성공",
-    data: editedTodo,
+    data: editedATodo,
   };
 
   return NextResponse.json(response, { status: 200 });
