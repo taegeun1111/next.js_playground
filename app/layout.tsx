@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={NotoSansKR.className}>
-      <body className="h-screen">{children}</body>
+      <body className="min-h-screen max-w-screen-xl">{children}</body>
     </html>
   );
 }

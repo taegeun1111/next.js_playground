@@ -1,5 +1,13 @@
-export default function Home(){
-  return(
-   <div>heeloworld</div>
-  )
+import BottomNavigation from "./components/navigation/BottomNavigation";
+import TopNavigation from "./components/navigation/TopNavigation";
+import MainSection from "./components/section/MainSection";
+
+export default function Home() {
+  return (
+    <div>
+      <TopNavigation />
+      <MainSection />
+      <BottomNavigation />
+    </div>
+  );
 }
