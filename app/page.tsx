@@ -4,10 +4,10 @@ import MainSection from "./components/section/MainSection";
 
 export default function Home() {
   return (
-    <div>
+    <main className="h-screen">
       <TopNavigation />
       <MainSection />
       <BottomNavigation />
-    </div>
+    </main>
   );
 }
