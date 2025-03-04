@@ -8,7 +8,7 @@ export default function MainCard({
   return (
     <>
       <div className="relative w-full p-2 justify-between gap-2">
-        <div className="w-full p-2 bg-white h-32">
+        <div className="w-full p-2 bg-white h-32 rounded-lg">
           <div className="flex flex-col w-full">
             <h2 className="text-xl font-bold">{title}</h2>
             <p className="w-24">{description}</p>

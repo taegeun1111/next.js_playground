@@ -1,3 +1,4 @@
+import DeliveryCard from "../card/DeliveryCard";
 import MainCard from "../card/MainCard";
 
 const obj = [
@@ -17,14 +18,19 @@ const obj = [
 
 export default function MainSection() {
   return (
-    <section className="h-full">
+    <section className="h-full flex flex-col">
       <div className="flex">
         {obj.map(
           (value: { title: string; description: string }, index: number) => (
-            <MainCard key={index} title={value.title} description={value.description} />
+            <MainCard
+              key={index}
+              title={value.title}
+              description={value.description}
+            />
           )
         )}
       </div>
+      <DeliveryCard />
     </section>
   );
 }
