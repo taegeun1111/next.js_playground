@@ -1,14 +1,29 @@
+import MainCard from "../card/MainCard";
+
+const obj = [
+  {
+    title: "배달",
+    description: "세상은 넓고 맛집은 없다",
+  },
+  {
+    title: "B마트",
+    description: "장보기도 더 빠르게",
+  },
+  {
+    title: "배민스토어",
+    description: "배달은 지금 옵니다",
+  },
+];
+
 export default function MainSection() {
   return (
     <section className="h-full">
-      <div className="flex flex-wrap">
-        {[1, 2, 3].map((index: number) => (
-          <div key={index}>Card</div>
-        ))}
-        <div>Big Card</div>
-        <div>banner Carousel</div>
-        <div>icon menu horizon</div>
-        <div>우리동네 빠른 배달</div>
+      <div className="flex">
+        {obj.map(
+          (value: { title: string; description: string }, index: number) => (
+            <MainCard key={index} title={value.title} description={value.description} />
+          )
+        )}
       </div>
     </section>
   );
