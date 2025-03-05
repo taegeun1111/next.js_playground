@@ -46,8 +46,8 @@ const deliveryIcons = [
 
 export default function DeliveryCard() {
   return (
-    <>
-      <div className="w-full flex flex-col bg-white p-2 ml-2">
+    <div className="p-2">
+      <div className="w-full flex flex-col bg-white p-2 rounded-xl">
         <div className="flex w-full justify-between">
           <div className="flex gap-2 items-center">
             <h2 className="text-xl font-bold">알뜰.한집배달</h2>
@@ -72,7 +72,7 @@ export default function DeliveryCard() {
             </svg>
           </span>
         </div>
-        <div className="mt-2 grid grid-cols-5 gap-8 content-center items-center justify-center">
+        <div className="mt-4 grid grid-cols-5 gap-8 content-center items-center justify-center">
           {deliveryIcons.map((value: any, index: number) => (
             <div key={index} className="w-full flex flex-col items-center jc">
               <Image
@@ -86,6 +86,6 @@ export default function DeliveryCard() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
