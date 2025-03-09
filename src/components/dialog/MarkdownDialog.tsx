@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Dialog,
   DialogClose,
@@ -13,8 +15,12 @@ import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
 import LabelCalendar from "../calendar/LabelCalendar";
 import { Separator } from "../ui/separator";
+import MDEditor from "../../../node_modules/@uiw/react-md-editor/esm/index";
 
 function MarkdownDialog() {
+  const [contents, setContents] = useState<string | undefined>(
+    "**Hello, World!!**"
+  );
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -36,6 +42,9 @@ function MarkdownDialog() {
             <LabelCalendar label="to" />
           </div>
           <Separator />
+          <div>
+            <MDEditor value={contents} height={"100%"} onChange={setContents} />
+          </div>
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
