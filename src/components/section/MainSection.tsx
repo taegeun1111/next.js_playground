@@ -1,6 +1,7 @@
+"use client";
+import { usePathname } from "next/navigation";
 import DeliveryCard from "../card/DeliveryCard";
 import MainCard from "../card/MainCard";
-
 const obj = [
   {
     title: "배달",
@@ -17,6 +18,9 @@ const obj = [
 ];
 
 export default function MainSection() {
+  const pathname = usePathname();
+  console.log("pathname: ", pathname);
+
   return (
     <section className="h-full flex flex-col">
       <div className="flex">

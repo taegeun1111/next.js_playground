@@ -1,4 +1,5 @@
 import { Noto_Sans_KR } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const NotoSansKR = Noto_Sans_KR({
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={NotoSansKR.className}>
-      <body className="relative min-h-screen max-w-screen-xl">{children}</body>
+      <body className="relative min-h-screen max-w-screen-xl">
+        {children}
+        <Toaster richColors position="top-center" />
+      </body>
     </html>
   );
 }

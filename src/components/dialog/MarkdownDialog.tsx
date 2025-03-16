@@ -16,11 +16,25 @@ import { Input } from "../ui/input";
 import LabelCalendar from "../calendar/LabelCalendar";
 import { Separator } from "../ui/separator";
 import MDEditor from "../../../node_modules/@uiw/react-md-editor/esm/index";
+import { toast } from "sonner";
 
 function MarkdownDialog() {
+  const [title, setTitle] = useState<string>("");
   const [contents, setContents] = useState<string | undefined>(
     "**Hello, World!!**"
   );
+
+  const onSubmit = () => {
+    console.log("submit");
+
+    if (!title || !contents) {
+      toast.error("기입되지 않은 데이터가 있습니다.");
+      return;
+    }
+
+
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -35,7 +49,7 @@ function MarkdownDialog() {
         <DialogHeader>
           <DialogTitle>
             <Checkbox />
-            <Input />
+            <Input onChange={(e) => setTitle(e.target.value)} />
           </DialogTitle>
           <div className="flex gap-2">
             <LabelCalendar label="from" />
@@ -59,6 +73,7 @@ function MarkdownDialog() {
             type="submit"
             variant={"ghost"}
             className="font-normal text-gray-400 hover:bg-gray-50 hover:text-gray-500"
+            onClick={onSubmit}
           >
             Submit
           </Button>

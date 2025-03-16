@@ -1,5 +1,6 @@
-export default function BillPage() {
-  return (
-    <div>hello billPage</div>
-  )
+import MainSection from "@/components/section/MainSection";
+import React from "react";
+
+export default function page() {
+  return <MainSection />;
 }
